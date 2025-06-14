@@ -1,0 +1,6 @@
+apiVersion: v2
+name: surveilance-camera-site
+description: surveilance-camera-site
+type: application
+version: 0.0.1
+appVersion: "1.0"
