@@ -1,6 +1,6 @@
 apiVersion: v2
-name: surveilance-camera-site
-description: surveilance-camera-site
+name: surveillance-camera-site
+description: surveillance-camera-site
 type: application
 version: 0.0.1
 appVersion: "1.0"

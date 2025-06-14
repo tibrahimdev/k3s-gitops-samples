@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: surveilance-camera-site
+  name: surveillance-camera-site
 
 # Create project
 ---
@@ -19,7 +19,7 @@ spec:
   destinations:
     - namespace: argocd
       server: {{ .Values.destination.server }}
-    - namespace: surveilance-camera-site
+    - namespace: surveillance-camera-site
       server: {{ .Values.destination.server }}
 
   # Allow apps to source from these Git repos
@@ -36,7 +36,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: surveilance-camera-site-root-app
+  name: surveillance-camera-site-root-app
   namespace: argocd
 spec:
   project: {{ .Values.project }}
@@ -46,7 +46,7 @@ spec:
   source:
     repoURL: {{ .Values.source.repoURL }}
     targetRevision: {{ .Values.source.targetRevision }}
-    path: surveilance-camera-site
+    path: surveillance-camera-site
     directory:
       recurse: true
   syncPolicy:
