@@ -10,21 +10,21 @@ metadata:
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: {{ .Values.project }}
+  name: {{ .Values.config.project }}
   namespace: argocd
 spec:
-  description: {{ .Values.description }}
+  description: {{ .Values.config.description }}
 
   # Allow apps in this project to deploy to this cluster/namespace
   destinations:
     - namespace: argocd
-      server: {{ .Values.destination.server }}
+      server: {{ .Values.config.destination.server }}
     - namespace: surveillance-camera-site
-      server: {{ .Values.destination.server }}
+      server: {{ .Values.config.destination.server }}
 
   # Allow apps to source from these Git repos
   sourceRepos:
-    - {{ .Values.source.repoURL }}
+    - {{ .Values.config.source.repoURL }}
 
   # Optionally restrict what they can do
   clusterResourceWhitelist:
@@ -39,15 +39,23 @@ metadata:
   name: surveillance-camera-site-root-app
   namespace: argocd
 spec:
-  project: {{ .Values.project }}
+  project: {{ .Values.config.project }}
   destination:
-    server: {{ .Values.destination.server }}
+    server: {{ .Values.config.destination.server }}
     namespace: argocd
   source:
-    repoURL: {{ .Values.source.repoURL }}
-    targetRevision: {{ .Values.source.targetRevision }}
+    repoURL: {{ .Values.config.source.repoURL }}
+    targetRevision: {{ .Values.config.source.targetRevision }}
     path: surveillance-camera-site
     directory:
       recurse: true
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - PruneLast=true
+      - CreateNamespace=true
+      - Validate=false
+
