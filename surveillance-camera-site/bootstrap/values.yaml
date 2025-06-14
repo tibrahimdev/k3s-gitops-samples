@@ -1,0 +1,8 @@
+baseName: surveillance-camera-site
+project: surveillance-camera-site
+description: Project for surveillance-related apps
+destination:
+  server: https://kubernetes.default.svc
+source:
+  repoURL: https://github.com/tibrahimdev/k3s-gitops-samples.git
+  targetRevision: main
