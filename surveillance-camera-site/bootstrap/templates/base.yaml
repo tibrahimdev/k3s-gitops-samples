@@ -51,11 +51,11 @@ spec:
       recurse: true
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - ApplyOutOfSyncOnly=true
-      - PruneLast=true
-      - CreateNamespace=true
-      - Validate=false
+    #   prune: true
+    #   selfHeal: true
+    # syncOptions:
+    #   - ApplyOutOfSyncOnly=true
+    #   - PruneLast=true
+    #   - CreateNamespace=true
+    #   - Validate=false
 
